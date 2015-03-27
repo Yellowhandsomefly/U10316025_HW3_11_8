@@ -1,19 +1,24 @@
 public class TestAccount{
 
+	/**Main method*/
 	public static void main(String[] args){
 	
+		/**Create Account object*/
 		Account account = new Account(1122, 1000, "George");
 
 		account.setAnnualInterestRate(1.5);
 	
+		/**Invoke the withdraw method to withdraw the money*/
 		account.withdraw(5);
 		account.withdraw(4);	
 		account.withdraw(2);
 
+		/**Invoke the deposit method to deposit the money*/
 		account.deposit(30);
 		account.deposit(40);
 		account.deposit(50);
 	
+		/**Print the data of the guest*/
 		System.out.println(account.toString());
 		
 
