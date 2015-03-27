@@ -13,6 +13,8 @@ public class TestAccount{
 		account.deposit(30);
 		account.deposit(40);
 		account.deposit(50);
+	
+		System.out.println(account.toString());
 		
 
 	}
