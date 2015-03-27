@@ -58,7 +58,7 @@ class Account{
 	/**a set method to set annual interest rate*/
 	public void setAnnualInterestRate(double annualInterestRate){
 
-		this.annualInterestRate = annualInterestRate;
+		this.annualInterestRate = annualInterestRate / 100;
 	}
 
 	/**a get method to return id*/
@@ -120,7 +120,7 @@ class Account{
 	/**a get method to return the monthly interest rate*/
 	public double getMonthlyInterestRate(){
 
-		return getAnnualInterestRate() / 1200;
+		return getAnnualInterestRate() / 12;
 	}
 
 	/**a get method to return the monthly interest*/
