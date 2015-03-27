@@ -1,3 +1,10 @@
+/**
+ * Name: 黃俊翔
+ * ID: U10316025 
+ * Ex: 11.8
+ * Information: 
+ *		This is a class which shows the result of the new account.
+ */
 public class TestAccount{
 
 	/**Main method*/
