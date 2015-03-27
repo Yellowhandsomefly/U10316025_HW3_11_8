@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 class Account{
 
@@ -7,6 +8,7 @@ class Account{
 	private double balance;
 	private double annualInterestRate;
 	private Date dateCreated;
+	private static int counter = 0;
 	ArrayList<Transaction> list = new ArrayList<Transaction>();
 
 	
@@ -23,9 +25,9 @@ class Account{
 	Account(int id, double balance, String name){
 
 		dateCreated = new Date();
-		this.name = name;
 		this.id = id;
 		this.balance = balance;
+		this.name = name;
 	}
 
 	public void setName(String name){
@@ -81,12 +83,25 @@ class Account{
 	public void withdraw(double withdraw){
 
 		balance = balance - withdraw;
+
+		if(balance < 0){
+
+			balance = 0;
+			System.out.println("Your balance is less than withdraw money");
+		}
+
+		list.add(new Transaction('W', withdraw, balance, "-------------------"));
+		System.out.println(((Transaction)list.get(counter)).getDescription());
+		counter++;
 	}
 
 	
 	public void deposit(double deposit){
 	
 		balance = balance + deposit;
+		list.add(new Transaction('D', deposit, balance, "-------------------"));
+		System.out.println(((Transaction)list.get(counter)).getDescription());
+		counter++;
 	}
 
 
@@ -104,6 +119,6 @@ class Account{
 
 	public String toString(){
 
-		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated(); 
-	}
-}		
+		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated();  		
+	}	
+}
