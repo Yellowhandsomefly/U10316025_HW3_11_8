@@ -11,7 +11,7 @@ class Transaction{
 	public Transaction(){
 		
 		date = new Date(); 
-		type = '';
+		type = '\u0000';
 		amount = 0;
 		balance = 0;
 		description = "";
@@ -68,6 +68,6 @@ class Transaction{
 	
 	public String getDescription(){
 
-		return "Type : " + getType() + "\nAmount : " + getAmount() + "\nBalance : " + getBalance() + "\nDate : " + getDate();
+		return "Type : " + getType() + "\nAmount : " + getAmount() + "\nBalance : " + getBalance() + "\nDate : " + getDate() + "\n" + description;  
 	}
-} 	
+}
