@@ -3,6 +3,7 @@ import java.util.Date;
 
 class Account{
 
+	/**Data field*/
 	private String name;
 	private int id;
 	private double balance;
@@ -11,7 +12,7 @@ class Account{
 	private static int counter = 0;
 	ArrayList<Transaction> list = new ArrayList<Transaction>();
 
-	
+	/**a no-arg constructor to initialize data field*/
 	Account(){
 
 		dateCreated = new Date();
@@ -21,7 +22,7 @@ class Account{
 		annualInterestRate = 0;
 	}
 
-	
+	/**a constructor to give the value to data field*/
 	Account(int id, double balance, String name){
 
 		dateCreated = new Date();
@@ -30,56 +31,61 @@ class Account{
 		this.name = name;
 	}
 
+	/**a set method to set name*/
 	public void setName(String name){
 	
 		this.name = name;
 	}
 
+	/**a get method to return name*/
 	public String getName(){
 
 		return name;
 	}
 	
+	/**a set method to set id*/
 	public void setId(int id){
 
 		this.id = id;
 	}
 
-	
+	/**a set method to set balance*/
 	public void setBalance(double balance){
 
 		this.balance = balance;
 	}
 
-
+	/**a set method to set annual interest rate*/
 	public void setAnnualInterestRate(double annualInterestRate){
 
 		this.annualInterestRate = annualInterestRate;
 	}
 
-	
+	/**a get method to return id*/
 	public int getId(){
 
 		return id;
 	}
 
+	/**a get method to return balance*/
 	public double getBalance(){
 
 		return balance; 
 	}
 
-
+	/**a get method to return annualInterestRate*/
 	public double getAnnualInterestRate(){
 
 		return annualInterestRate;
 	}
 
+	/**a get method to return the created date*/
 	public Date getDateCreated(){
 
 		return dateCreated;
 	}
 
-	
+	/**a method to withdraw and record the new balance*/
 	public void withdraw(double withdraw){
 
 		balance = balance - withdraw;
@@ -90,35 +96,42 @@ class Account{
 			System.out.println("Your balance is less than withdraw money");
 		}
 
-		list.add(new Transaction('W', withdraw, balance, "-------------------"));
+		/**Add element*/
+		list.add(new Transaction('W', withdraw, balance, "----------------------"));
+		
+		/**Casting*/
 		System.out.println(((Transaction)list.get(counter)).getDescription());
 		counter++;
 	}
 
-	
+	/**a method to deposit and record the new balance*/
 	public void deposit(double deposit){
 	
 		balance = balance + deposit;
-		list.add(new Transaction('D', deposit, balance, "-------------------"));
+
+		/**Add element*/
+		list.add(new Transaction('D', deposit, balance, "----------------------"));
+		
+		/**Casting*/
 		System.out.println(((Transaction)list.get(counter)).getDescription());
 		counter++;
 	}
 
-
+	/**a get method to return the monthly interest rate*/
 	public double getMonthlyInterestRate(){
 
 		return getAnnualInterestRate() / 1200;
 	}
 
-	
+	/**a get method to return the monthly interest*/
 	public double getMonthlyInterest(){
 
 		return balance * getMonthlyInterestRate();
 	}
 
-
+	/**a toString method to return the string*/
 	public String toString(){
 
-		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated();  		
-	}	
+		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated(); 
+	}
 }
