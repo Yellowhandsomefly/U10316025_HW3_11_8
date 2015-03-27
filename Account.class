@@ -132,6 +132,7 @@ class Account{
 	/**a toString method to return the string*/
 	public String toString(){
 
-		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated(); 
+		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nAnnual Interest Rate : " + getAnnualInterestRate()
+			+ "\nMonthly Interest Rate : " + getMonthlyInterestRate() + "\nMonthly Interest : $" + getMonthlyInterest() ;
 	}
 }
