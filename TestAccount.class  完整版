@@ -1,0 +1,254 @@
+/**
+ * Name: 黃俊翔
+ * ID: U10316025 
+ * Ex: 11.8
+ * Information: 
+ *		This is a class which shows the result of the new account.
+ */
+import java.util.ArrayList;
+import java.util.Date;
+
+public class TestAccount{
+
+	/**Main method*/
+	public static void main(String[] args){
+	
+		/**Create Account object*/
+		Account account = new Account(1122, 1000, "George");
+
+		account.setAnnualInterestRate(1.5);
+	
+		/**Invoke the withdraw method to withdraw the money*/
+		account.withdraw(5);
+		account.withdraw(4);	
+		account.withdraw(2);
+
+		/**Invoke the deposit method to deposit the money*/
+		account.deposit(30);
+		account.deposit(40);
+		account.deposit(50);
+	
+		/**Print the data of the guest*/
+		System.out.println(account.toString());
+		
+
+	}
+}
+class Account{
+
+	/**Data field*/
+	private String name;
+	private int id;
+	private double balance;
+	private double annualInterestRate;
+	private Date dateCreated;
+	private static int counter = 0;
+	ArrayList<Transaction> list = new ArrayList<Transaction>();
+
+	/**a no-arg constructor to initialize data field*/
+	Account(){
+
+		dateCreated = new Date();
+		name = "";
+		id = 0;
+		balance = 0;
+		annualInterestRate = 0;
+	}
+
+	/**a constructor to give the value to data field*/
+	Account(int id, double balance, String name){
+
+		dateCreated = new Date();
+		this.id = id;
+		this.balance = balance;
+		this.name = name;
+	}
+
+	/**a set method to set name*/
+	public void setName(String name){
+	
+		this.name = name;
+	}
+
+	/**a get method to return name*/
+	public String getName(){
+
+		return name;
+	}
+	
+	/**a set method to set id*/
+	public void setId(int id){
+
+		this.id = id;
+	}
+
+	/**a set method to set balance*/
+	public void setBalance(double balance){
+
+		this.balance = balance;
+	}
+
+	/**a set method to set annual interest rate*/
+	public void setAnnualInterestRate(double annualInterestRate){
+
+		this.annualInterestRate = annualInterestRate;
+	}
+
+	/**a get method to return id*/
+	public int getId(){
+
+		return id;
+	}
+
+	/**a get method to return balance*/
+	public double getBalance(){
+
+		return balance; 
+	}
+
+	/**a get method to return annualInterestRate*/
+	public double getAnnualInterestRate(){
+
+		return annualInterestRate;
+	}
+
+	/**a get method to return the created date*/
+	public Date getDateCreated(){
+
+		return dateCreated;
+	}
+
+	/**a method to withdraw and record the new balance*/
+	public void withdraw(double withdraw){
+
+		balance = balance - withdraw;
+
+		if(balance < 0){
+
+			balance = 0;
+			System.out.println("Your balance is less than withdraw money");
+		}
+
+		/**Add element*/
+		list.add(new Transaction('W', withdraw, balance, "----------------------"));
+		
+		/**Casting*/
+		System.out.println(((Transaction)list.get(counter)).getDescription());
+		counter++;
+	}
+
+	/**a method to deposit and record the new balance*/
+	public void deposit(double deposit){
+	
+		balance = balance + deposit;
+
+		/**Add element*/
+		list.add(new Transaction('D', deposit, balance, "----------------------"));
+		
+		/**Casting*/
+		System.out.println(((Transaction)list.get(counter)).getDescription());
+		counter++;
+	}
+
+	/**a get method to return the monthly interest rate*/
+	public double getMonthlyInterestRate(){
+
+		return getAnnualInterestRate() / 1200;
+	}
+
+	/**a get method to return the monthly interest*/
+	public double getMonthlyInterest(){
+
+		return balance * getMonthlyInterestRate();
+	}
+
+	/**a toString method to return the string*/
+	public String toString(){
+
+		return "Name : " + getName() + "\nID : " + getId() + "\nBalance : $" + getBalance() + "\nMonthly Interest : $" + getMonthlyInterest() + "\nDate : " + getDateCreated();
+	}
+}
+
+class Transaction{
+	
+	/**Data field*/
+	private Date date; 
+	private char type;
+	private double amount;
+	private double balance;
+	private String description;
+
+	/**a no-arg constructor to initialize data field*/
+	public Transaction(){
+		
+		date = new Date(); 
+		type = '\u0000';
+		amount = 0;
+		balance = 0;
+		description = "";
+	}
+
+	/**a constructor to give the value to data field*/
+	public Transaction(char type, double amount, double balance, String description){
+		
+		date = new Date(); 
+		this.type = type;
+		this.amount = amount;
+		this.balance = balance;
+		this.description = description;
+	}
+	
+	/**a set method to set type*/
+	public void setType(char type){
+
+		this.type = type;
+	}
+
+	/**a set method to set amount*/
+	public void setAmount(double amount){
+
+		this.amount = amount;
+	}
+
+	/**a set method to set balance*/
+	public void setBalance(double balance){
+
+		this.balance = balance;
+	}
+
+	/**a set method to set description*/
+	public void setDescription(String description){
+
+		this.description = description;
+	}
+	
+	/**a get method to return type*/
+	public char getType(){
+
+		return type;
+	}
+
+	/**a get method to return amount*/	
+	public double getAmount(){
+		
+		return amount;
+	}
+	
+	/**a get method to return balance*/
+	public double getBalance(){
+	
+		return balance;
+	}
+
+	/**a get method to return date*/
+	public Date getDate(){
+
+		return date;
+	}
+	
+	/**a get method to return description*/
+	public String getDescription(){
+
+		return "Type : " + getType() + "\nAmount : " + getAmount() + "\nBalance : " + getBalance() + "\nDate : " + getDate() + "\n" + description;
+	}
+} 	
